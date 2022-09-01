@@ -1,3 +1,28 @@
+# cppdataloader
+
+**Warning**
+cppdataloader is still alpha and stability is not guaranteed.
+
+cppdataloader is a batching and caching library for C++17.
+
+cppdataloader is a generic utility to be used as part of your application's data fetching layer to provide a simplified and consistent API over various remote data sources such as databases or web services via batching and caching.
+
+## Features
+- [x] Batching
+- [x] Caching
+- [x] Direct dispatch
+- [ ] Timeout dispatch
+- [ ] Empty values
+
+## Quickstart
+
+cppq is a header-only library with no dependencies.
+
+Just include the header: `#include "cppdataloader.h"`.
+
+## Example
+
+```c++
 #include "cppdataloader.hpp"
 
 #include <iostream>
@@ -15,6 +40,7 @@ class UserBatchLoader : public BatchLoader<long, User> {
       // Make a DB call here or something and pass in userIds to SELECT and return
       for (auto userId : userIds)
         result.push_back(User(userId));
+      // Results should be in the same order as passed-in IDs
       return result;
     }
 };
@@ -33,4 +59,8 @@ int main(int argc, char *argv[]) {
 
   std::cout << load1.get().id << " " << load2.get().id << " " << load3.get().id << std::endl;
 }
+```
 
+## License
+
+cppdataloader is MIT-licensed.
