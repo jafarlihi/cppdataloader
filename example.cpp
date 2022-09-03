@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
 
   std::future<User> load1 = userLoader.load(1);
   std::future<User> load2 = userLoader.load(2);
-  // Since this fetches the same ID of `1`, it will be return the cached value
+  // Since this fetches the same ID of `1`, it will return the cached value
   std::future<User> load3 = userLoader.load(1);
 
   // Both calls to `load` will be batched and executed with this call
